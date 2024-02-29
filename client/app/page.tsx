@@ -1,6 +1,8 @@
 "use client"
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Section1 from "@/components/Section1";
+import Section2 from "@/components/Section2";
 import { useState } from "react";
 
 export default function Home() {
@@ -11,7 +13,8 @@ export default function Home() {
     {!open && (
       <>
       <Hero/>
-      
+      <Section1/>
+      <Section2/>
       </>
     )
     }
