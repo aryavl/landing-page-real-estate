@@ -39,7 +39,7 @@ const Hero = () => {
           height={500}
         />
       </div>
-      <div className="absolute top-[7rem] sm:top-[15rem] md:top-[20rem] w-full bg-gray-200 h-[40%] rounded-t-[80px] z-0"></div>
+      <div className="absolute top-[7rem] sm:top-[15rem] md:top-[20rem] w-full bg-[#bbe3f5] h-[40%] rounded-t-[80px] z-0"></div>
       
     </div>
     </div>

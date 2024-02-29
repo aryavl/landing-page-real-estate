@@ -4,7 +4,7 @@ import React from 'react'
 
 const Section1 = () => {
   return (
-    <div className='w-[80%] mx-auto '>
+    <div className='w-[95%] md:w-[80%] mx-auto '>
         <div className='text-center'>
             <h1 className='font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl uppercase '>How it works?</h1>
             <p className='mt-2'>Step By Step Guide</p>
