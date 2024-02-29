@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -6,6 +7,35 @@ import YoutubeIcon from '@mui/icons-material/YouTube';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Instagram } from '@mui/icons-material';
 const Footer = () => {
+    const [error,setError] = useState("")
+    const [email,setEmail] = useState("")
+
+   
+    const handleSubmit = async(e:any) =>{
+    e.preventDefault();
+    try {
+    
+        const res= await fetch('/api/user-suscribe',{
+          method:'POST',
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            email
+          })
+        })
+        if(res.status === 400){
+          setError("This email is already registered")
+        }
+        if(res.status === 200){
+          setError("")
+         
+        }
+      } catch (error:any) {
+        console.error("Suscribe user error",error.message);
+        setError("Error, try again")
+      }
+    }
   return (
     <div className='bg-[#070b36]  text-[#9e9d9d]'>
     <div className='w-[80%] mx-auto pt-20 pb-10'>
@@ -41,8 +71,9 @@ const Footer = () => {
             <div className='px-4'>
                 <h1 className='text-white font-semibold  mb-4 text-sm'>Subscribe Us</h1>
                 <p className='mb-2'>Subscribe to our weekly newsletter</p>
-                <form action="">
-                    <input placeholder='Email Id' type='text' name='email' className='rounded-lg px-3 py-2 text-[15px] w-full'/>
+                <form action="" onSubmit={handleSubmit}>
+                    <input placeholder='Email Id' type='text' name='email' className='rounded-lg px-3 py-2 text-[15px] w-full' onChange={(e)=>{setEmail(e.target.value)}}/>
+                  <p className="text-red-600 text=[16px] mb-4">{error && error}</p>
                     <button type='submit' className='flex items-center justify-center bg-[#4b9eec] w-full rounded-lg px-3 py-2 text-[15px] text-white mt-2'>Subscribe</button>
                 </form>
                 
